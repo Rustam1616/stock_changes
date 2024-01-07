@@ -47,4 +47,4 @@ for firm in sample(firms, 51):
     df = df.tail(1)
     gdf = pd.concat([gdf, df])
     
-st.markdown(gdf.sort_values(by=['percent']).head(50))
+st.dataframe(gdf.sort_values(by=['percent']).head(50))
