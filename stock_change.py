@@ -4,6 +4,7 @@ import datetime
 import random
 from random import sample
 from IPython.display import display
+import streamlit as st
 firms = ['AAPL','MSFT','AMZN','NVDA','GOOGL','META','GOOG','BRK-B','TSLA','UNH','LLY','JPM','XOM','AVGO','V','JNJ','PG','MA',
          'HD','ADBE','MRK','CVX','COST','ABBV','PEP','KO','WMT','CRM','BAC','ACN','NFLX','MCD','LIN','AMD','CSCO','INTC',
          'ORCL','TMO','CMCSA','ABT','DIS','PFE','WFC','INTU','VZ','QCOM','PM','AMGN','TXN','IBM','COP','DHR','UNP','NOW',
@@ -46,4 +47,4 @@ for firm in sample(firms, 51):
     df = df.tail(1)
     gdf = pd.concat([gdf, df])
     
-display(gdf.sort_values(by=['percent']).head(50))
+st.markdown(display(gdf.sort_values(by=['percent']).head(50)))
