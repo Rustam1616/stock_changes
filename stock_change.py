@@ -34,6 +34,7 @@ firms = ['AAPL','MSFT','AMZN','NVDA','GOOGL','META','GOOG','BRK-B','TSLA','UNH',
          'BXP','FOXA','CTLT','GNRC','TPR','BEN','FRT','FMC','BBWI','PARA','XRAY','IVZ','BIO','NCLH','WHR','CMA','HAS',
          'VFC','ZION','DVA','RL','SEE','ALK','SEDG','MHK','FOX','NWS']
 gdf = pd.DataFrame(columns=['Date','Close','Company','roll','percent', '3 days ago'])
+st.slider(min_value = 51, max_value = len(firms)-1)
 for firm in sample(firms, 51):
     ticker = yf.Ticker(firm)
     df = ticker.history(start = datetime.datetime.today()-datetime.timedelta(days=5), 
