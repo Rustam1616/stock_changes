@@ -37,7 +37,7 @@ gdf = pd.DataFrame(columns=['Date','Close','Company','roll','percent', '3 days a
 st.slider('Sample size', min_value = 51, max_value = 500)
 for firm in sample(firms, 51):
     ticker = yf.Ticker(firm)
-    df = ticker.history(start = datetime.datetime.today()-datetime.timedelta(days=5), 
+    df = ticker.history(start = datetime.datetime.today()-datetime.timedelta(days=8), 
                         end = datetime.datetime.today())['Close']
     df = df.reset_index()
     rdf = df
