@@ -45,4 +45,4 @@ for firm in firms:
     df = df.tail(1)
     gdf = pd.concat([gdf, df])
     
-st.dataframe(gdf.sort_values(by=['percent']).head(50))
+st.dataframe(gdf.drop(['Date', axis=1]).sort_values(by=['percent']).head(50))
