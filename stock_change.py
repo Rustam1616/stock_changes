@@ -40,6 +40,7 @@ for firm in sample(firms, 51):
     df = ticker.history(start = datetime.datetime.today()-datetime.timedelta(days=5), 
                         end = datetime.datetime.today())['Close']
     df = df.reset_index()
+    st.dataframe(df)
     df['Company'] = firm
     df['Close'] = round(df['Close'],ndigits=2)
     df['roll'] = df['Close'].diff(periods=3)
