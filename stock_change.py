@@ -1,8 +1,6 @@
 import pandas as pd
 import yfinance as yf
 import datetime
-import random
-from random import sample
 from IPython.display import display
 import streamlit as st
 firms = ['AAPL','MSFT','AMZN','NVDA','GOOGL','META','GOOG','BRK-B','TSLA','UNH','LLY','JPM','XOM','AVGO','V','JNJ','PG','MA',
@@ -34,13 +32,11 @@ firms = ['AAPL','MSFT','AMZN','NVDA','GOOGL','META','GOOG','BRK-B','TSLA','UNH',
          'BXP','FOXA','CTLT','GNRC','TPR','BEN','FRT','FMC','BBWI','PARA','XRAY','IVZ','BIO','NCLH','WHR','CMA','HAS',
          'VFC','ZION','DVA','RL','SEE','ALK','SEDG','MHK','FOX','NWS']
 gdf = pd.DataFrame(columns=['Date','Close','Company','roll','percent', '3 days ago'])
-st.slider('Sample size', min_value = 51, max_value = 500)
-for firm in sample(firms, 51):
+for firm in firms:
     ticker = yf.Ticker(firm)
     df = ticker.history(start = datetime.datetime.today()-datetime.timedelta(days=8), 
                         end = datetime.datetime.today())['Close']
     df = df.reset_index()
-    rdf = df
     df['Company'] = firm
     df['Close'] = round(df['Close'],ndigits=2)
     df['roll'] = df['Close'].diff(periods=3)
@@ -50,4 +46,3 @@ for firm in sample(firms, 51):
     gdf = pd.concat([gdf, df])
     
 st.dataframe(gdf.sort_values(by=['percent']).head(50))
-st.dataframe(rdf)
